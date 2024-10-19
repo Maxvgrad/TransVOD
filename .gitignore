@@ -1,1 +1,4 @@
 .idea
+
+experiment-*
+not_tracked_dir/
