@@ -242,6 +242,12 @@ def build(image_set, args):
         "train_joint": [(root / "Data" , root / "annotations" / 'imagenet_vid_train_joint_30.json')],
         "val": [(root / "Data" / "VID", root / "annotations" / 'imagenet_vid_val.json')],
     }
+
+    is_mot = args.vid_path.endswith('MOT17')
+
+    if is_mot:
+        PATHS['val'] = [(root / "test", root / "annotations" / 'half-val_cocoformat.json')]
+
     datasets = []
     for (img_folder, ann_file) in PATHS[image_set]:
         dataset = CocoDetection(img_folder, ann_file, transforms=make_coco_transforms(image_set), is_train =(not args.eval), interval1=args.interval1,
