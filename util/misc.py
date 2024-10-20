@@ -28,6 +28,7 @@ from torch import Tensor
 # needed due to empty tensor bug in pytorch and torchvision 0.5
 import torchvision
 if int(torchvision.__version__.split('.')[0]) <= 0 and int(torchvision.__version__.split('.')[1]) < 5:
+    print(f'torchvision.__version__: {torchvision.__version__}')
     import math
     from torchvision.ops.misc import _NewEmptyTensorOp
     def _check_size_scale_factor(dim, size, scale_factor):
